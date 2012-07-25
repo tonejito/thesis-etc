@@ -11,4 +11,7 @@
 #
 # By default this script does nothing.
 
+date
+echo '= ^ . ^ ='
+
 exit 0

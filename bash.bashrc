@@ -48,3 +48,12 @@ if [ -x /usr/lib/command-not-found -o -x /usr/share/command-not-found ]; then
 		fi
 	}
 fi
+
+#	= ^ . ^ =
+
+export LS_OPTIONS='--color=auto --group-directories-first'
+export GREP_OPTIONS='--color=auto'
+eval "`dircolors`"
+alias ls='ls $LS_OPTIONS'
+alias grep='grep $GREP_OPTIONS'
+

@@ -1,5 +1,5 @@
 /var/log/aptitude {
-  rotate 6
+  rotate 12
   monthly
   compress
   missingok
