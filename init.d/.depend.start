@@ -1,0 +1,10 @@
+TARGETS = rsyslog killprocs sudo acpid cron rsync ssh bootlogs single rc.local stop-bootlogd rmnologin
+INTERACTIVE =
+acpid: rsyslog
+cron: rsyslog
+rsync: rsyslog
+ssh: rsyslog
+single: killprocs bootlogs
+rc.local: rsyslog bootlogs acpid cron rsync ssh sudo
+stop-bootlogd: rsyslog bootlogs acpid cron rsync ssh sudo
+rmnologin: sudo rsyslog bootlogs acpid cron rsync ssh
