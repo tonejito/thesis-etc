@@ -7,3 +7,4 @@ sudoers*
 ssh/moduli
 ssh/ssh_host_*_key
 ssl/private/*
+adjtime
