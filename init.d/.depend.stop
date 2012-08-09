@@ -1,11 +1,11 @@
 TARGETS = apache2 urandom sendsigs rsyslog umountnfs.sh hwclock.sh networking ifupdown umountfs umountroot halt reboot
 sendsigs: apache2
-rsyslog: sendsigs apache2
-umountnfs.sh: sendsigs rsyslog apache2
+rsyslog: apache2 sendsigs
+umountnfs.sh: apache2 rsyslog sendsigs
 hwclock.sh: rsyslog
 networking: umountnfs.sh apache2
-ifupdown: umountnfs.sh networking apache2
-umountfs: hwclock.sh ifupdown umountnfs.sh networking urandom apache2
+ifupdown: umountnfs.sh apache2 networking
+umountfs: umountnfs.sh apache2 hwclock.sh ifupdown networking urandom
 umountroot: umountfs
 halt: umountroot
 reboot: umountroot

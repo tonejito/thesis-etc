@@ -1,11 +1,12 @@
-TARGETS = rsyslog killprocs sudo apache2 acpid cron rsync ssh bootlogs single rc.local rmnologin stop-bootlogd
+TARGETS = rsyslog killprocs sudo apache2 acpid ssh cron rsync ntp bootlogs single rmnologin stop-bootlogd rc.local
 INTERACTIVE = apache2
 apache2: rsyslog
 acpid: rsyslog
+ssh: rsyslog
 cron: rsyslog
 rsync: rsyslog
-ssh: rsyslog
+ntp: rsyslog
 single: killprocs bootlogs
-rc.local: rsyslog bootlogs sudo acpid cron rsync ssh apache2
-rmnologin: sudo rsyslog bootlogs acpid cron rsync ssh apache2
-stop-bootlogd: rsyslog bootlogs sudo acpid cron rsync ssh apache2
+rmnologin: sudo apache2 rsyslog bootlogs acpid ssh cron rsync ntp
+stop-bootlogd: apache2 rsyslog bootlogs sudo acpid ssh cron rsync ntp
+rc.local: rsyslog apache2 bootlogs sudo acpid ssh cron rsync ntp
